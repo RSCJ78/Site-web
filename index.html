@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSCJ78 - Rénovation d'Habitations</title>
+    <style>
+        :root {
+            --primary-color: #161616;
+            --secondary-color: #020075bb;
+            --light-color: #f5f5f5;
+            --dark-color: #161616;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: #020075bb;
+            padding: 20px 0;
+            box-shadow: 0 20px 30px #020075bb;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo span.text-rscj {
+            color: white;
+            margin-left: 10px;
+        }
+        .logo span.text-78 {
+        color: #020075bb;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color:  #eeeeeec7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            height: 70vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color:#580000bb;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            margin-bottom: 30px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            margin-top: 30px;
+        }
+        
+        .form-note {
+            font-style: italic;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Styles pour la section contact améliorée */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .appointment-form {
+            background: var(--secondary-color);
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .services-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .services-checkboxes p {
+            grid-column: 1 / -1;
+            margin-bottom: 5px;
+        }
+
+        .services-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width: 480px) {
+            .services-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://i.postimg.cc/3W5SWYJx/Capture-d-cran-2025-03-12-043531.png" alt="RSCJ78 Logo">
+                <span class="text-rscj">RSCJ<span class="text-78">78</span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="accueil">
+        <div class="container hero-content">
+            <h1>Rénovation d'habita exterieur interieur</h1>
+            <p>Transformez votre espace de vie selon vos envies avec RSCJ78</p>
+            <a href="#contact" class="btn">Demander un devis gratuit</a>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services</h2>
+                <p>Des solutions complètes pour tous vos projets de rénovation</p>
+            </div>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/Vs3yQsLC/Capture-d-cran-2025-03-12-115003.png" alt="Maçonnerie">
+                    </div>
+                    <div class="service-content">
+                        <h3>Maçonnerie</h3>
+                        <p>Travaux de construction, rénovation et réparation de structures en maçonnerie pour tous types d'habitations.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/4xgry8c4/Capture-d-cran-2025-03-12-115510.png" alt="Peinture">
+                    </div>
+                    <div class="service-content">
+                        <h3>Peinture</h3>
+                        <p>Services de peinture intérieure et extérieure pour rafraîchir et embellir votre espace de vie.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/cHHh63TL/Capture-d-cran-2025-03-12-114654.png" alt="Carrelage">
+                    </div>
+                    <div class="service-content">
+                        <h3>Carrelage</h3>
+                        <p>Installation et rénovation de carrelage pour sols et murs dans toutes les pièces de votre habitation.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/hGMMSsLY/Capture-d-cran-2025-03-12-113621.png" alt="Électricité">
+                    </div>
+                    <div class="service-content">
+                        <h3>Électricité</h3>
+                        <p>Installation, mise aux normes et dépannage de systèmes électriques pour une habitation sécurisée.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/XNZMzB3W/Capture-d-cran-2025-03-12-114558.png" alt="Plomberie">
+                    </div>
+                    <div class="service-content">
+                        <h3>Plomberie</h3>
+                        <p>Services complets de plomberie pour l'installation, la réparation et l'entretien de vos systèmes d'eau.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/zXhMgpyQ/Capture-d-cran-2025-03-12-122320.png" alt="Aménagement cuisine et salle de bain">
+                    </div>
+                    <div class="service-content">
+                        <h3>Aménagement cuisine et salle de bain</h3>
+                        <p>Conception et réalisation de cuisines et salles de bain sur mesure selon vos goûts et besoins.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/nc7yH8Cw/Capture-d-cran-2025-03-12-115141.png" alt="Ravalement de façade">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ravalement de façade</h3>
+                        <p>Rénovation et embellissement des façades de votre habitation pour une meilleure protection et esthétique.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/cLBPnQ7R/Capture-d-cran-2025-03-12-115412.png" alt="Entretien des espaces verts">
+                    </div>
+                    <div class="service-content">
+                        <h3>Entretien des espaces verts</h3>
+                        <p>Aménagement et entretien de jardins et espaces extérieurs pour valoriser votre propriété.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/fy59Gz6S/Capture-d-cran-2025-03-12-120432.png" alt="Parquet">
+                    </div>
+                    <div class="service-content">
+                        <h3>Parquet</h3>
+                        <p>Installation, rénovation et entretien de parquets pour un sol élégant et durable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="apropos">
+        <div class="container">
+            <div class="section-title">
+                <h2>À Propos de RSCJ78</h2>
+                <p>Votre partenaire de confiance pour tous vos projets de rénovation</p>
+            </div>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://i.postimg.cc/3W5SWYJx/Capture-d-cran-2025-03-12-043531.png" alt="RSCJ78 équipe">
+                </div>
+                <div class="about-content">
+                    <h3>Notre expertise à votre service</h3>
+                    <p>RSCJ78 est une entreprise spécialisée dans la rénovation d'habitations, quel que soit le type de logement. l'entrepise s'engage a transformer votre espace selon vos souhaits et besoins.</p>
+                    <p>Nous intervenons sur l'ensemble des travaux de rénovation intérieure et extérieure, en vous garantissant un travail de qualité, respectueux des délais et à des prix compétitifs.</p>
+                    <p>Notre priorité est votre satisfaction. C'est pourquoi nous vous accompagnons tout au long de votre projet, depuis l'établissement du devis gratuit jusqu'à la réception des travaux.</p>
+                    <p>Faites confiance à RSCJ78 pour donner vie à vos idées et valoriser votre patrimoine immobilier.</p>
+                    <p>Je vous invite à me confier l'ensemble de votre projet afin de vous assurer une prestation cohérente et optimisée, sans avoir à faire appel à plusieurs entreprises. Cela me permettra de vous offrir un service complet, personnalisé et parfaitement adapté à vos besoins. 😊</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Vous avez un projet de rénovation ?</h2>
+            <p>Nos devis sont gratuits et sans engagement</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre écoute pour tous vos projets</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Formulaire de contact -->
+                <div class="contact-box">
+                    <h3>Demande de devis</h3>
+                    <form id="contactForm" action="https://formspree.io/f/xzzebkka" method="POST">
+                        <div class="contact-form">
+                            <input type="text" name="name" placeholder="Votre nom complet *" required>
+                            <input type="email" name="email" placeholder="Votre email *" required>
+                            <input type="tel" name="phone" placeholder="Votre téléphone *" required>
+                            <input type="text" name="address" placeholder="Adresse du chantier">
+                            <div class="services-checkboxes">
+                                <p>Sélectionnez vos services * :</p>
+                                <label><input type="checkbox" name="services[]" value="maconnerie"> Maçonnerie</label>
+                                <label><input type="checkbox" name="services[]" value="peinture"> Peinture</label>
+                                <label><input type="checkbox" name="services[]" value="carrelage"> Carrelage</label>
+                                <label><input type="checkbox" name="services[]" value="electricite"> Électricité</label>
+                                <label><input type="checkbox" name="services[]" value="plomberie"> Plomberie</label>
+                                <label><input type="checkbox" name="services[]" value="cuisine-sdb"> Aménagement cuisine/sdb</label>
+                                <label><input type="checkbox" name="services[]" value="facade"> Ravalement façade</label>
+                                <label><input type="checkbox" name="services[]" value="espaces-verts"> Espaces verts</label>
+                                <label><input type="checkbox" name="services[]" value="parquet"> Parquet</label>
+                                <label><input type="checkbox" name="services[]" value="autre"> Autre</label>
+                            </div>
+                            <textarea name="message" rows="5" placeholder="Description de votre projet *" required></textarea>
+                            <button type="submit" class="btn">Envoyer ma demande</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Prise de rendez-vous -->
+                <div class="appointment-form">
+                    <h3>Prendre rendez-vous</h3>
+                    <p>Préférez-vous discuter de votre projet en personne ?</p>
+                    <form id="contactform" action="https://formspree.io/f/xzzebkka" method="POST">
+                        <div class="contact-form">
+                            <input type="text" name="name" placeholder="Votre nom complet *" required>
+                            <input type="tel" name="phone" placeholder="Votre téléphone *" required>
+                            <input type="email" name="email" placeholder="Votre email *" required>
+                            <input type="text" name="address" placeholder="Adresse du rendez-vous *" required>
+                            <input type="date" name="preferred_date" required>
+                            <select name="preferred_time" required>
+                                <option value="">Choisir un créneau horaire *</option>
+                                <option value="matin">Matin (9h-12h)</option>
+                                <option value="apres-midi">Après-midi (14h-17h)</option>
+                            </select>
+                            <textarea name="notes" rows="3" placeholder="Notes ou précisions"></textarea>
+                            <button type="submit" class="btn">Demander un rendez-vous</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Afficher le message de succès (après soumission réussie)
+            const form = this;
+            
+            // Nous ne prévenons pas la soumission par défaut car nous voulons que le formulaire soit soumis à Formspree
+            
+            // Une fois soumis, montrer le message de confirmation
+            form.addEventListener('formspree-success', function() {
+                document.getElementById('successMessage').style.display = 'block';
+                form.reset();
+            });
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>RSCJ78</h3>
+                    <p>Entreprise de rénovation d'habitations</p>
+                    <p>Nous intervenons dans le 89, 45, 77.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Nos services</h3>
+                    <ul>
+                        <li><a href="#services">Maçonnerie</a></li>
+                        <li><a href="#services">Peinture</a></li>
+                        <li><a href="#services">Carrelage</a></li>
+                        <li><a href="#services">Électricité</a></li>
+                        <li><a href="#services">Plomberie</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Téléphone: 06.79.93.84.60</p>
+                    <p>Email: rscj7892@gmail.com</p>
+                    <p>Adresse: bp541</p>
+                    <p>Code postal: 89105 sens cedex.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 RSCJ78 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
