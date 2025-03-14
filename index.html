@@ -411,6 +411,81 @@
         .specific-services {
             margin-top: 20px;
         }
+
+        .service-selector {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .service-selector select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-selector select:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .service-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .service-chip {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .service-chip:hover {
+            background: #f0f0f0;
+            border-color: var(--secondary-color);
+        }
+
+        .service-chip.selected {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .service-chip input[type="checkbox"] {
+            display: none;
+        }
+
+        .service-chip .icon {
+            margin-right: 5px;
+        }
+
+        .service-chip.selected {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .service-chip:not(.selected):hover {
+            background: #f0f0f0;
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -588,59 +663,40 @@
                             <input type="tel" name="phone" placeholder="Votre téléphone *" required>
                             <input type="text" name="address" placeholder="Adresse du chantier *" required>
                             
-                            <div class="services-selection">
-                                <h4>Type de projet *</h4>
-                                <div class="services-grid">
-                                    <div class="service-option">
-                                        <input type="radio" id="renovation-complete" name="project-type" value="renovation-complete">
-                                        <label for="renovation-complete">Rénovation complète</label>
-                                    </div>
-                                    <div class="service-option">
-                                        <input type="radio" id="travaux-specifiques" name="project-type" value="travaux-specifiques">
-                                        <label for="travaux-specifiques">Travaux spécifiques</label>
-                                    </div>
-                                </div>
+                            <div class="service-selector">
+                                <select name="project_type" required>
+                                    <option value="">Sélectionnez le type de projet *</option>
+                                    <option value="renovation_complete">🏠 Rénovation complète</option>
+                                    <option value="renovation_partielle">🔨 Rénovation partielle</option>
+                                    <option value="travaux_specifiques">🛠️ Travaux spécifiques</option>
+                                </select>
 
-                                <div class="specific-services">
-                                    <h4>Services souhaités</h4>
-                                    <div class="services-grid">
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="maconnerie">
-                                            <span class="checkbox-text">🏗️ Maçonnerie</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="peinture">
-                                            <span class="checkbox-text">🎨 Peinture</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="carrelage">
-                                            <span class="checkbox-text">🔲 Carrelage</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="electricite">
-                                            <span class="checkbox-text">⚡ Électricité</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="plomberie">
-                                            <span class="checkbox-text">🚰 Plomberie</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="cuisine-sdb">
-                                            <span class="checkbox-text">🛁 Cuisine/SDB</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="facade">
-                                            <span class="checkbox-text">🏠 Façade</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="espaces-verts">
-                                            <span class="checkbox-text">🌳 Espaces verts</span>
-                                        </label>
-                                        <label class="service-checkbox">
-                                            <input type="checkbox" name="services[]" value="parquet">
-                                            <span class="checkbox-text">📏 Parquet</span>
-                                        </label>
-                                    </div>
+                                <p>Services souhaités :</p>
+                                <div class="service-chips">
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="maconnerie">
+                                        <span class="icon">🏗️</span> Maçonnerie
+                                    </label>
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="peinture">
+                                        <span class="icon">🎨</span> Peinture
+                                    </label>
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="carrelage">
+                                        <span class="icon">🔲</span> Carrelage
+                                    </label>
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="electricite">
+                                        <span class="icon">⚡</span> Électricité
+                                    </label>
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="plomberie">
+                                        <span class="icon">🚰</span> Plomberie
+                                    </label>
+                                    <label class="service-chip">
+                                        <input type="checkbox" name="services[]" value="cuisine-sdb">
+                                        <span class="icon">🛁</span> Cuisine/SDB
+                                    </label>
                                 </div>
                             </div>
 
@@ -674,15 +730,38 @@
             </div>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
-            // Afficher le message de succès (après soumission réussie)
+            event.preventDefault();
             const form = this;
             
-            // Nous ne prévenons pas la soumission par défaut car nous voulons que le formulaire soit soumis à Formspree
+            // Récupérer tous les services sélectionnés
+            const selectedServices = Array.from(document.querySelectorAll('.service-chip.selected'))
+                .map(chip => chip.querySelector('input').value);
             
-            // Une fois soumis, montrer le message de confirmation
-            form.addEventListener('formspree-success', function() {
-                document.getElementById('successMessage').style.display = 'block';
-                form.reset();
+            // Créer un champ caché pour les services sélectionnés
+            const servicesInput = document.createElement('input');
+            servicesInput.type = 'hidden';
+            servicesInput.name = 'services';
+            servicesInput.value = selectedServices.join(', ');
+            form.appendChild(servicesInput);
+            
+            // Soumettre le formulaire
+            form.submit();
+        });
+
+        document.querySelectorAll('.service-chip').forEach(chip => {
+            chip.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('selected');
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+            });
+        });
+
+        document.addEventListener('formspree-success', function() {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('contactForm').reset();
+            document.querySelectorAll('.service-chip').forEach(chip => {
+                chip.classList.remove('selected');
             });
         });
     </script>
