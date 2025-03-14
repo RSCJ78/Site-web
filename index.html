@@ -250,6 +250,11 @@
             margin-top: 10px;
             color: #666;
         }
+
+        .color-contact {
+            color:#00095a
+        }  
+        
         
         .success-message {
             display: none;
@@ -350,6 +355,61 @@
             .services-checkboxes {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .services-selection {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .services-selection h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-checkbox:hover {
+            background: #f0f0f0;
+            border-color: var(--secondary-color);
+        }
+
+        .service-checkbox input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .checkbox-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .specific-services {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -511,7 +571,7 @@
     </section>
     
     <section id="contact">
-        <div class="container">
+        <div class="color-contact">
             <div class="section-title">
                 <h2>Contactez-nous</h2>
                 <p>Nous sommes à votre écoute pour tous vos projets</p>
@@ -526,20 +586,64 @@
                             <input type="text" name="name" placeholder="Votre nom complet *" required>
                             <input type="email" name="email" placeholder="Votre email *" required>
                             <input type="tel" name="phone" placeholder="Votre téléphone *" required>
-                            <input type="text" name="address" placeholder="Adresse du chantier">
-                            <div class="services-checkboxes">
-                                <p>Sélectionnez vos services * :</p>
-                                <label><input type="checkbox" name="services[]" value="maconnerie"> Maçonnerie</label>
-                                <label><input type="checkbox" name="services[]" value="peinture"> Peinture</label>
-                                <label><input type="checkbox" name="services[]" value="carrelage"> Carrelage</label>
-                                <label><input type="checkbox" name="services[]" value="electricite"> Électricité</label>
-                                <label><input type="checkbox" name="services[]" value="plomberie"> Plomberie</label>
-                                <label><input type="checkbox" name="services[]" value="cuisine-sdb"> Aménagement cuisine/sdb</label>
-                                <label><input type="checkbox" name="services[]" value="facade"> Ravalement façade</label>
-                                <label><input type="checkbox" name="services[]" value="espaces-verts"> Espaces verts</label>
-                                <label><input type="checkbox" name="services[]" value="parquet"> Parquet</label>
-                                <label><input type="checkbox" name="services[]" value="autre"> Autre</label>
+                            <input type="text" name="address" placeholder="Adresse du chantier *" required>
+                            
+                            <div class="services-selection">
+                                <h4>Type de projet *</h4>
+                                <div class="services-grid">
+                                    <div class="service-option">
+                                        <input type="radio" id="renovation-complete" name="project-type" value="renovation-complete">
+                                        <label for="renovation-complete">Rénovation complète</label>
+                                    </div>
+                                    <div class="service-option">
+                                        <input type="radio" id="travaux-specifiques" name="project-type" value="travaux-specifiques">
+                                        <label for="travaux-specifiques">Travaux spécifiques</label>
+                                    </div>
+                                </div>
+
+                                <div class="specific-services">
+                                    <h4>Services souhaités</h4>
+                                    <div class="services-grid">
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="maconnerie">
+                                            <span class="checkbox-text">🏗️ Maçonnerie</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="peinture">
+                                            <span class="checkbox-text">🎨 Peinture</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="carrelage">
+                                            <span class="checkbox-text">🔲 Carrelage</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="electricite">
+                                            <span class="checkbox-text">⚡ Électricité</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="plomberie">
+                                            <span class="checkbox-text">🚰 Plomberie</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="cuisine-sdb">
+                                            <span class="checkbox-text">🛁 Cuisine/SDB</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="facade">
+                                            <span class="checkbox-text">🏠 Façade</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="espaces-verts">
+                                            <span class="checkbox-text">🌳 Espaces verts</span>
+                                        </label>
+                                        <label class="service-checkbox">
+                                            <input type="checkbox" name="services[]" value="parquet">
+                                            <span class="checkbox-text">📏 Parquet</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
+
                             <textarea name="message" rows="5" placeholder="Description de votre projet *" required></textarea>
                             <button type="submit" class="btn">Envoyer ma demande</button>
                         </div>
